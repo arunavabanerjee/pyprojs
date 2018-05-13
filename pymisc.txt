@@ -1,0 +1,69 @@
+
+//The os module provides dozens of functions for interacting with the operating system:
+>>> import os
+>>> os.getcwd()      # Return the current working directory
+
+>>> import os
+>>> dir(os)
+<returns a list of all module functions>
+>>> help(os)
+<returns an extensive manual page created from the module's docstrings>
+
+>>> import sys
+>>> print sys.argv
+['demo.py', 'one', 'two', 'three']
+>>> python demo.py one two three 
+
+>>> import shutil
+>>> shutil.copyfile('data.db', 'archive.db')
+>>> shutil.move('/build/executables', 'installdir')
+
+>>> import re
+>>> re.findall(r'\bf[a-z]*', 'which foot or hand fell fastest')
+['foot', 'fell', 'fastest']
+>>> re.sub(r'(\b[a-z]+) \1', r'\1', 'cat in the the hat')
+'cat in the hat'
+
+The math module gives access to the underlying C library functions for floating point math:
+
+>>> import math
+>>> math.cos(math.pi / 4.0)
+0.70710678118654757
+>>> math.log(1024, 2)
+10.0
+
+The random module provides tools for making random selections:
+
+>>> import random
+>>> random.choice(['apple', 'pear', 'banana'])
+'apple'
+>>> random.sample(xrange(100), 10)   # sampling without replacement
+[30, 83, 16, 4, 8, 81, 41, 50, 18, 33]
+>>> random.random()    # random float
+0.17970987693706186
+>>> random.randrange(6)    # random integer chosen from range(6)
+4
+
+There are a number of modules for accessing the internet and processing internet protocols. 
+Two of the simplest are urllib2 for retrieving data from URLs and smtplib for sending mail:
+
+>>> import urllib2
+>>> for line in urllib2.urlopen('http://tycho.usno.navy.mil/cgi-bin/timer.pl'):
+...     if 'EST' in line or 'EDT' in line:  # look for Eastern Time
+...         print line
+
+<BR>Nov. 25, 09:43:32 PM EST
+
+>>> import smtplib
+>>> server = smtplib.SMTP('localhost')
+>>> server.sendmail('soothsayer@example.org', 'jcaesar@example.org',
+... """To: jcaesar@example.org
+... From: soothsayer@example.org
+...
+... Beware the Ides of March.
+... """)
+>>> server.quit()
+
+
+
+
